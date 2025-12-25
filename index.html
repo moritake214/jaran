@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaran Online Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&family=Poppins:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fcfaf7;
+        }
+        .farsi {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            direction: rtl;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .price-badge {
+            background-color: #ef4444;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: bold;
+        }
+        .tab-active {
+            border-bottom: 3px solid #ef4444;
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body class="max-w-md mx-auto pb-10">
+
+    <!-- Header -->
+    <header class="bg-white border-b sticky top-0 z-10 px-4 py-4 text-center">
+        <h1 class="text-2xl font-bold text-gray-800">Jaran</h1>
+        <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Chicken Broth Noodle House</p>
+        
+        <!-- Language Switcher -->
+        <div class="flex justify-center mt-4 space-x-4 border-t pt-3">
+            <button onclick="setLang('en')" id="btn-en" class="text-sm font-semibold px-4 py-1 tab-active">English</button>
+            <button onclick="setLang('fa')" id="btn-fa" class="text-sm font-semibold px-4 py-1 text-gray-400">فارسی</button>
+        </div>
+    </header>
+
+    <main class="px-4 mt-6">
+        <!-- Commitment -->
+        <div id="commitment" class="text-center mb-8">
+            <p id="commit-text" class="italic text-gray-600 text-sm leading-relaxed">
+                "The transparent umami of chicken. We only use our owner's proud, pure chicken broth—light yet deeply flavorful."
+            </p>
+        </div>
+
+        <!-- Section: Ramen -->
+        <section class="mb-8">
+            <h2 id="title-ramen" class="text-lg font-bold border-l-4 border-red-500 pl-3 mb-4 flex items-center">
+                <span class="mr-2">🍜</span> Main Ramen
+            </h2>
+            <div id="ramen-list"></div>
+        </section>
+
+        <!-- Section: Sides -->
+        <section class="mb-8">
+            <h2 id="title-sides" class="text-lg font-bold border-l-4 border-red-500 pl-3 mb-4 flex items-center">
+                <span class="mr-2">🍚</span> Side Dishes
+            </h2>
+            <div id="sides-list"></div>
+        </section>
+
+        <!-- Section: Toppings -->
+        <section class="mb-8">
+            <h2 id="title-toppings" class="text-lg font-bold border-l-4 border-red-500 pl-3 mb-4 flex items-center">
+                <span class="mr-2">🥚</span> Toppings
+            </h2>
+            <div id="toppings-list"></div>
+        </section>
+
+        <!-- Customization -->
+        <div class="bg-gray-100 p-4 rounded-lg text-xs text-gray-500 text-center leading-relaxed" id="footer-note">
+            When ordering, you can choose your noodle firmness (Barikata / Hard / Regular / Soft) and broth richness (Rich / Regular / Light).
+        </div>
+    </main>
+
+    <script>
+        const data = {
+            en: {
+                commitment: "The transparent umami of chicken. We only use our owner's proud, pure chicken broth—light yet deeply flavorful.",
+                sections: {
+                    ramen: "Main Ramen",
+                    sides: "Side Dishes",
+                    toppings: "Toppings"
+                },
+                footer: "When ordering, you can choose your noodle firmness (Barikata / Hard / Regular / Soft) and broth richness (Rich / Regular / Light).",
+                items: {
+                    ramen: [
+                        { name: "Shoyu Ramen", desc: "Classic clear soy sauce, maximizing chicken flavor.", price: "¥850" },
+                        { name: "Shio Ramen", desc: "Simple yet profound bowl, highlighting chicken and salt.", price: "¥880" },
+                        { name: "Miso Ramen", desc: "Fragrant miso and chicken broth blend perfectly.", price: "¥920" }
+                    ],
+                    sides: [
+                        { name: "Karaage", desc: "Juicy fried chicken (3 pcs).", price: "¥400" },
+                        { name: "Yaki Gyoza", desc: "Crispy pan-fried dumplings (5 pcs).", price: "¥350" },
+                        { name: "Mini Chashu-don", desc: "Bowl topped with tender simmered chashu.", price: "¥380" },
+                        { name: "Rice (Small)", desc: "", price: "¥150" },
+                        { name: "Rice (Large)", desc: "", price: "¥250" }
+                    ],
+                    toppings: [
+                        { name: "Ajitama", desc: "Soft-boiled marinated egg.", price: "¥100" },
+                        { name: "Chashu", desc: "2 extra slices of pork belly.", price: "¥100" },
+                        { name: "Nori", desc: "5 sheets of fragrant seaweed.", price: "¥50" },
+                        { name: "Negi", desc: "Extra serving of crisp scallions.", price: "¥50" }
+                    ]
+                }
+            },
+            fa: {
+                commitment: "طعم اومامی شفاف مرغ. ما فقط از آب مرغ خالص و افتخار آمیز صاحب رستوران استفاده می‌کنیم—سبک و در عین حال عمیقاً خوشمزه.",
+                sections: {
+                    ramen: "رامن‌های اصلی",
+                    sides: "غذاهای جانبی",
+                    toppings: "مخلفات (تاッピング)"
+                },
+                footer: "هنگام سفارش، می‌توانید سفتی نودل (باری‌کاتا / سفت / معمولی / نرم) و غلظت آبگوشت (غلیظ / معمولی / سبک) را انتخاب کنید.",
+                items: {
+                    ramen: [
+                        { name: "رامن شویو", desc: "شویوی کلاسیک شفاف، که حداکثر طعم آب مرغ را به نمایش می‌گذارد.", price: "۸۵۰ ین" },
+                        { name: "رامن شیو", desc: "یک کاسه ساده اما عمیق، که طعم مرغ و نمک را برجسته می‌کند.", price: "۸۸۰ ین" },
+                        { name: "رامن میسو", desc: "طعمی عمیق و غنی که در آن میسوی معطر و آب مرغ ترکیب می‌شوند.", price: "۹۲۰ ین" }
+                    ],
+                    sides: [
+                        { name: "کاراآگه", desc: "مرغ سوخاری آبدار (۳ تکه).", price: "۴۰۰ ین" },
+                        { name: "یاکی گیوزا", desc: "دامپلینگ‌های ترد و خوش‌بو (۵ تکه).", price: "۳۵۰ ین" },
+                        { name: "مینی چاشو-دون", desc: "کاسه مینی با تکه‌های چاشو لطیف.", price: "۳۸۰ ین" },
+                        { name: "برنج (کوچک)", desc: "", price: "۱۵۰ ین" },
+                        { name: "برنج (بزرگ)", desc: "", price: "۲۵۰ ین" }
+                    ],
+                    toppings: [
+                        { name: "آجی-تاما", desc: "تخم مرغ نیم‌پز مزه‌دار شده عالی.", price: "۱۰۰ ین" },
+                        { name: "چاشو", desc: "۲ تکه اضافی گوشت خوک آب‌پز شده.", price: "۱۰۰ ین" },
+                        { name: "نوری", desc: "۵ ورق جلبک دریایی خشک معطر.", price: "۵۰ ین" },
+                        { name: "نگی", desc: "سهم اضافی پیازچه ترد.", price: "۵۰ ین" }
+                    ]
+                }
+            }
+        };
+
+        function setLang(lang) {
+            const isFarsi = lang === 'fa';
+            document.body.className = isFarsi ? 'max-w-md mx-auto pb-10 farsi' : 'max-w-md mx-auto pb-10';
+            
+            // Update Text
+            document.getElementById('commit-text').textContent = data[lang].commitment;
+            document.getElementById('title-ramen').innerHTML = `<span class="${isFarsi ? 'ml-2' : 'mr-2'}">🍜</span> ${data[lang].sections.ramen}`;
+            document.getElementById('title-sides').innerHTML = `<span class="${isFarsi ? 'ml-2' : 'mr-2'}">🍚</span> ${data[lang].sections.sides}`;
+            document.getElementById('title-toppings').innerHTML = `<span class="${isFarsi ? 'ml-2' : 'mr-2'}">🥚</span> ${data[lang].sections.toppings}`;
+            document.getElementById('footer-note').textContent = data[lang].footer;
+
+            // Render Lists
+            renderList('ramen-list', data[lang].items.ramen, isFarsi);
+            renderList('sides-list', data[lang].items.sides, isFarsi);
+            renderList('toppings-list', data[lang].items.toppings, isFarsi);
+
+            // Update Tab UI
+            document.getElementById('btn-en').className = `text-sm font-semibold px-4 py-1 ${lang === 'en' ? 'tab-active' : 'text-gray-400'}`;
+            document.getElementById('btn-fa').className = `text-sm font-semibold px-4 py-1 ${lang === 'fa' ? 'tab-active' : 'text-gray-400'}`;
+        }
+
+        function renderList(containerId, items, isFarsi) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = items.map(item => `
+                <div class="card p-4">
+                    <div class="flex justify-between items-start">
+                        <div class="${isFarsi ? 'text-right' : 'text-left'}">
+                            <h3 class="font-bold text-gray-800">${item.name}</h3>
+                            <p class="text-xs text-gray-500 mt-1">${item.desc}</p>
+                        </div>
+                        <div class="price-badge text-sm">${item.price}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize with English
+        window.onload = () => setLang('en');
+    </script>
+</body>
+</html>
