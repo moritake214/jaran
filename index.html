@@ -22,11 +22,19 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             margin-bottom: 1.5rem;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .item-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background-color: #eee;
         }
         .price-badge {
             background-color: #ef4444;
             color: white;
-            padding: 2px 8px;
+            padding: 2px 10px;
             border-radius: 9999px;
             font-weight: bold;
         }
@@ -100,22 +108,20 @@
                 footer: "When ordering, you can choose your noodle firmness (Barikata / Hard / Regular / Soft) and broth richness (Rich / Regular / Light).",
                 items: {
                     ramen: [
-                        { name: "Shoyu Ramen", desc: "Classic clear soy sauce, maximizing chicken flavor.", price: "¥850" },
-                        { name: "Shio Ramen", desc: "Simple yet profound bowl, highlighting chicken and salt.", price: "¥880" },
-                        { name: "Miso Ramen", desc: "Fragrant miso and chicken broth blend perfectly.", price: "¥920" }
+                        { name: "Shoyu Ramen", desc: "Classic clear soy sauce, maximizing chicken flavor.", price: "¥850", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Shio Ramen", desc: "Simple yet profound bowl, highlighting chicken and salt.", price: "¥880", image: "https://images.unsplash.com/photo-1591814448473-7027b89944d1?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Miso Ramen", desc: "Fragrant miso and chicken broth blend perfectly.", price: "¥920", image: "https://images.unsplash.com/photo-1623341214825-9f4f963727da?auto=format&fit=crop&w=400&q=80" }
                     ],
                     sides: [
-                        { name: "Karaage", desc: "Juicy fried chicken (3 pcs).", price: "¥400" },
-                        { name: "Yaki Gyoza", desc: "Crispy pan-fried dumplings (5 pcs).", price: "¥350" },
-                        { name: "Mini Chashu-don", desc: "Bowl topped with tender simmered chashu.", price: "¥380" },
-                        { name: "Rice (Small)", desc: "", price: "¥150" },
-                        { name: "Rice (Large)", desc: "", price: "¥250" }
+                        { name: "Karaage", desc: "Juicy fried chicken (3 pcs).", price: "¥400", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Yaki Gyoza", desc: "Crispy pan-fried dumplings (5 pcs).", price: "¥350", image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Mini Chashu-don", desc: "Bowl topped with tender simmered chashu.", price: "¥380", image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Rice", desc: "Steamed Japanese rice.", price: "¥150~", image: "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=400&q=80" }
                     ],
                     toppings: [
-                        { name: "Ajitama", desc: "Soft-boiled marinated egg.", price: "¥100" },
-                        { name: "Chashu", desc: "2 extra slices of pork belly.", price: "¥100" },
-                        { name: "Nori", desc: "5 sheets of fragrant seaweed.", price: "¥50" },
-                        { name: "Negi", desc: "Extra serving of crisp scallions.", price: "¥50" }
+                        { name: "Ajitama", desc: "Soft-boiled marinated egg.", price: "¥100", image: "https://images.unsplash.com/photo-1581062094236-896886e0892c?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Chashu", desc: "2 extra slices of pork belly.", price: "¥100", image: "https://images.unsplash.com/photo-1606131731446-5568d87113aa?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Nori / Negi", desc: "Seaweed or extra scallions.", price: "¥50", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80" }
                     ]
                 }
             },
@@ -129,22 +135,20 @@
                 footer: "هنگام سفارش، می‌توانید سفتی نودل (باری‌کاتا / سفت / معمولی / نرم) و غلظت آبگوشت (غلیظ / معمولی / سبک) را انتخاب کنید.",
                 items: {
                     ramen: [
-                        { name: "رامن شویو", desc: "شویوی کلاسیک شفاف، که حداکثر طعم آب مرغ را به نمایش می‌گذارد.", price: "۸۵۰ ین" },
-                        { name: "رامن شیو", desc: "یک کاسه ساده اما عمیق، که طعم مرغ و نمک را برجسته می‌کند.", price: "۸۸۰ ین" },
-                        { name: "رامن میسو", desc: "طعمی عمیق و غنی که در آن میسوی معطر و آب مرغ ترکیب می‌شوند.", price: "۹۲۰ ین" }
+                        { name: "رامن شویو", desc: "شویوی کلاسیک شفاف، که حداکثر طعم آب مرغ را به نمایش می‌گذارد.", price: "۸۵۰ ین", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80" },
+                        { name: "رامن شیو", desc: "یک کاسه ساده اما عمیق، که طعم مرغ و نمک را برجسته می‌کند.", price: "۸۸۰ ین", image: "https://images.unsplash.com/photo-1591814448473-7027b89944d1?auto=format&fit=crop&w=400&q=80" },
+                        { name: "رامن میسو", desc: "طعمی عمیق و غنی که در آن میسوی معطر و آب مرغ ترکیب می‌شوند.", price: "۹۲۰ ین", image: "https://images.unsplash.com/photo-1623341214825-9f4f963727da?auto=format&fit=crop&w=400&q=80" }
                     ],
                     sides: [
-                        { name: "کاراآگه", desc: "مرغ سوخاری آبدار (۳ تکه).", price: "۴۰۰ ین" },
-                        { name: "یاکی گیوزا", desc: "دامپلینگ‌های ترد و خوش‌بو (۵ تکه).", price: "۳۵۰ ین" },
-                        { name: "مینی چاشو-دون", desc: "کاسه مینی با تکه‌های چاشو لطیف.", price: "۳۸۰ ین" },
-                        { name: "برنج (کوچک)", desc: "", price: "۱۵۰ ین" },
-                        { name: "برنج (بزرگ)", desc: "", price: "۲۵۰ ین" }
+                        { name: "کاراآگه", desc: "مرغ سوخاری آبدار (۳ تکه).", price: "۴۰۰ ین", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&q=80" },
+                        { name: "یاکی گیوزا", desc: "دامپلینگ‌های ترد و خوش‌بو (۵ تکه).", price: "۳۵۰ ین", image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80" },
+                        { name: "مینی چاشو-دون", desc: "کاسه مینی با تکه‌های چاشو لطیف.", price: "۳۸۰ ین", image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=400&q=80" },
+                        { name: "برنج", desc: "برنج بخارپز شده ژاپنی.", price: "۱۵۰ ین", image: "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=400&q=80" }
                     ],
                     toppings: [
-                        { name: "آجی-تاما", desc: "تخم مرغ نیم‌پز مزه‌دار شده عالی.", price: "۱۰۰ ین" },
-                        { name: "چاشو", desc: "۲ تکه اضافی گوشت خوک آب‌پز شده.", price: "۱۰۰ ین" },
-                        { name: "نوری", desc: "۵ ورق جلبک دریایی خشک معطر.", price: "۵۰ ین" },
-                        { name: "نگی", desc: "سهم اضافی پیازچه ترد.", price: "۵۰ ین" }
+                        { name: "آجی-تاما", desc: "تخم مرغ نیم‌پز مزه‌دار شده عالی.", price: "۱۰۰ ین", image: "https://images.unsplash.com/photo-1581062094236-896886e0892c?auto=format&fit=crop&w=400&q=80" },
+                        { name: "چاشو", desc: "۲ تکه اضافی گوشت خوک آب‌پز شده.", price: "۱۰۰ ین", image: "https://images.unsplash.com/photo-1606131731446-5568d87113aa?auto=format&fit=crop&w=400&q=80" },
+                        { name: "نوری / نگی", desc: "جلبک دریایی یا پیازچه اضافی.", price: "۵۰ ین", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80" }
                     ]
                 }
             }
@@ -174,13 +178,14 @@
         function renderList(containerId, items, isFarsi) {
             const container = document.getElementById(containerId);
             container.innerHTML = items.map(item => `
-                <div class="card p-4">
-                    <div class="flex justify-between items-start">
-                        <div class="${isFarsi ? 'text-right' : 'text-left'}">
-                            <h3 class="font-bold text-gray-800">${item.name}</h3>
-                            <p class="text-xs text-gray-500 mt-1">${item.desc}</p>
+                <div class="card">
+                    <img src="${item.image}" alt="${item.name}" class="item-image" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-gray-800 text-lg">${item.name}</h3>
+                            <span class="price-badge text-sm whitespace-nowrap">${item.price}</span>
                         </div>
-                        <div class="price-badge text-sm">${item.price}</div>
+                        <p class="text-xs text-gray-500 leading-relaxed">${item.desc}</p>
                     </div>
                 </div>
             `).join('');
