@@ -16,27 +16,34 @@
             font-family: 'Noto Sans Arabic', sans-serif;
             direction: rtl;
         }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
         .card {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
         .item-image {
             width: 100%;
-            height: 160px;
+            height: 120px;
             object-fit: cover;
             background-color: #eee;
         }
         .price-badge {
             background-color: #ef4444;
             color: white;
-            padding: 2px 10px;
+            padding: 1px 8px;
             border-radius: 9999px;
             font-weight: bold;
+            font-size: 0.75rem;
+            display: inline-block;
         }
         .tab-active {
             border-bottom: 3px solid #ef4444;
@@ -60,8 +67,8 @@
 
     <main class="px-4 mt-6">
         <!-- Commitment -->
-        <div id="commitment" class="text-center mb-8">
-            <p id="commit-text" class="italic text-gray-600 text-sm leading-relaxed">
+        <div id="commitment" class="text-center mb-8 px-2">
+            <p id="commit-text" class="italic text-gray-600 text-xs leading-relaxed">
                 "The transparent umami of chicken. We only use our owner's proud, pure chicken broth—light yet deeply flavorful."
             </p>
         </div>
@@ -71,7 +78,7 @@
             <h2 id="title-ramen" class="text-lg font-bold border-l-4 border-red-500 pl-3 mb-4 flex items-center">
                 <span class="mr-2">🍜</span> Main Ramen
             </h2>
-            <div id="ramen-list"></div>
+            <div id="ramen-list" class="grid-container"></div>
         </section>
 
         <!-- Section: Sides -->
@@ -79,7 +86,7 @@
             <h2 id="title-sides" class="text-lg font-bold border-l-4 border-red-500 pl-3 mb-4 flex items-center">
                 <span class="mr-2">🍚</span> Side Dishes
             </h2>
-            <div id="sides-list"></div>
+            <div id="sides-list" class="grid-container"></div>
         </section>
 
         <!-- Section: Toppings -->
@@ -87,11 +94,11 @@
             <h2 id="title-toppings" class="text-lg font-bold border-l-4 border-red-500 pl-3 mb-4 flex items-center">
                 <span class="mr-2">🥚</span> Toppings
             </h2>
-            <div id="toppings-list"></div>
+            <div id="toppings-list" class="grid-container"></div>
         </section>
 
         <!-- Customization -->
-        <div class="bg-gray-100 p-4 rounded-lg text-xs text-gray-500 text-center leading-relaxed" id="footer-note">
+        <div class="bg-gray-100 p-4 rounded-lg text-[10px] text-gray-500 text-center leading-relaxed" id="footer-note">
             When ordering, you can choose your noodle firmness (Barikata / Hard / Regular / Soft) and broth richness (Rich / Regular / Light).
         </div>
     </main>
@@ -108,47 +115,49 @@
                 footer: "When ordering, you can choose your noodle firmness (Barikata / Hard / Regular / Soft) and broth richness (Rich / Regular / Light).",
                 items: {
                     ramen: [
-                        { name: "Shoyu Ramen", desc: "Classic clear soy sauce, maximizing chicken flavor.", price: "¥850", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80" },
-                        { name: "Shio Ramen", desc: "Simple yet profound bowl, highlighting chicken and salt.", price: "¥880", image: "https://images.unsplash.com/photo-1591814448473-7027b89944d1?auto=format&fit=crop&w=400&q=80" },
-                        { name: "Miso Ramen", desc: "Fragrant miso and chicken broth blend perfectly.", price: "¥920", image: "https://images.unsplash.com/photo-1623341214825-9f4f963727da?auto=format&fit=crop&w=400&q=80" }
+                        { name: "Shoyu Ramen", desc: "Classic soy sauce flavor.", price: "¥850", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Shio Ramen", desc: "Pure chicken & salt.", price: "¥880", image: "https://images.unsplash.com/photo-1591814448473-7027b89944d1?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Miso Ramen", desc: "Rich fragrant miso.", price: "¥920", image: "https://images.unsplash.com/photo-1623341214825-9f4f963727da?auto=format&fit=crop&w=400&q=80" }
                     ],
                     sides: [
-                        { name: "Karaage", desc: "Juicy fried chicken (3 pcs).", price: "¥400", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&q=80" },
-                        { name: "Yaki Gyoza", desc: "Crispy pan-fried dumplings (5 pcs).", price: "¥350", image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80" },
-                        { name: "Mini Chashu-don", desc: "Bowl topped with tender simmered chashu.", price: "¥380", image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=400&q=80" },
-                        { name: "Rice", desc: "Steamed Japanese rice.", price: "¥150~", image: "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=400&q=80" }
+                        { name: "Karaage", desc: "Juicy fried chicken (3pcs).", price: "¥400", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Yaki Gyoza", desc: "Crispy dumplings (5pcs).", price: "¥350", image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Chashu-don", desc: "Mini pork bowl.", price: "¥380", image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Rice", desc: "Japanese rice.", price: "¥150", image: "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=400&q=80" }
                     ],
                     toppings: [
-                        { name: "Ajitama", desc: "Soft-boiled marinated egg.", price: "¥100", image: "https://images.unsplash.com/photo-1581062094236-896886e0892c?auto=format&fit=crop&w=400&q=80" },
-                        { name: "Chashu", desc: "2 extra slices of pork belly.", price: "¥100", image: "https://images.unsplash.com/photo-1606131731446-5568d87113aa?auto=format&fit=crop&w=400&q=80" },
-                        { name: "Nori / Negi", desc: "Seaweed or extra scallions.", price: "¥50", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80" }
+                        { name: "Ajitama", desc: "Marinated egg.", price: "¥100", image: "https://images.unsplash.com/photo-1581062094236-896886e0892c?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Chashu", desc: "Pork slices.", price: "¥100", image: "https://images.unsplash.com/photo-1606131731446-5568d87113aa?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Nori", desc: "Dried seaweed.", price: "¥50", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80" },
+                        { name: "Negi", desc: "Scallions.", price: "¥50", image: "https://images.unsplash.com/photo-1515543904379-3d757afe72e2?auto=format&fit=crop&w=400&q=80" }
                     ]
                 }
             },
             fa: {
-                commitment: "طعم اومامی شفاف مرغ. ما فقط از آب مرغ خالص و افتخار آمیز صاحب رستوران استفاده می‌کنیم—سبک و در عین حال عمیقاً خوشمزه.",
+                commitment: "طعم اومامی شفاف مرغ. ما فقط از آب مرغ خالص استفاده می‌کنیم—سبک و در عین حال عمیقاً خوشمزه.",
                 sections: {
                     ramen: "رامن‌های اصلی",
                     sides: "غذاهای جانبی",
-                    toppings: "مخلفات (تاッピング)"
+                    toppings: "مخلفات"
                 },
-                footer: "هنگام سفارش، می‌توانید سفتی نودل (باری‌کاتا / سفت / معمولی / نرم) و غلظت آبگوشت (غلیظ / معمولی / سبک) را انتخاب کنید.",
+                footer: "هنگام سفارش، می‌توانید سفتی نودل و غلظت آبگوشت را انتخاب کنید.",
                 items: {
                     ramen: [
-                        { name: "رامن شویو", desc: "شویوی کلاسیک شفاف، که حداکثر طعم آب مرغ را به نمایش می‌گذارد.", price: "۸۵۰ ین", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80" },
-                        { name: "رامن شیو", desc: "یک کاسه ساده اما عمیق، که طعم مرغ و نمک را برجسته می‌کند.", price: "۸۸۰ ین", image: "https://images.unsplash.com/photo-1591814448473-7027b89944d1?auto=format&fit=crop&w=400&q=80" },
-                        { name: "رامن میسو", desc: "طعمی عمیق و غنی که در آن میسوی معطر و آب مرغ ترکیب می‌شوند.", price: "۹۲۰ ین", image: "https://images.unsplash.com/photo-1623341214825-9f4f963727da?auto=format&fit=crop&w=400&q=80" }
+                        { name: "رامن شویو", desc: "طعم سویا کلاسیک.", price: "۸۵۰ ین", image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80" },
+                        { name: "رامن شیو", desc: "مرغ و نمک خالص.", price: "۸۸۰ ین", image: "https://images.unsplash.com/photo-1591814448473-7027b89944d1?auto=format&fit=crop&w=400&q=80" },
+                        { name: "رامن میسو", desc: "میسو معطر و غنی.", price: "۹۲۰ ین", image: "https://images.unsplash.com/photo-1623341214825-9f4f963727da?auto=format&fit=crop&w=400&q=80" }
                     ],
                     sides: [
-                        { name: "کاراآگه", desc: "مرغ سوخاری آبدار (۳ تکه).", price: "۴۰۰ ین", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&q=80" },
-                        { name: "یاکی گیوزا", desc: "دامپلینگ‌های ترد و خوش‌بو (۵ تکه).", price: "۳۵۰ ین", image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80" },
-                        { name: "مینی چاشو-دون", desc: "کاسه مینی با تکه‌های چاشو لطیف.", price: "۳۸۰ ین", image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=400&q=80" },
-                        { name: "برنج", desc: "برنج بخارپز شده ژاپنی.", price: "۱۵۰ ین", image: "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=400&q=80" }
+                        { name: "کاراآگه", desc: "مرغ سوخاری (۳ تکه).", price: "۴۰۰ ین", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&q=80" },
+                        { name: "یاکی گیوزا", desc: "دامپلینگ ترد (۵ تکه).", price: "۳۵۰ ین", image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80" },
+                        { name: "چاشو-دون", desc: "کاسه مینی گوشت.", price: "۳۸۰ ین", image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=400&q=80" },
+                        { name: "برنج", desc: "برنج ژاپنی.", price: "۱۵۰ ین", image: "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=400&q=80" }
                     ],
                     toppings: [
-                        { name: "آجی-تاما", desc: "تخم مرغ نیم‌پز مزه‌دار شده عالی.", price: "۱۰۰ ین", image: "https://images.unsplash.com/photo-1581062094236-896886e0892c?auto=format&fit=crop&w=400&q=80" },
-                        { name: "چاشو", desc: "۲ تکه اضافی گوشت خوک آب‌پز شده.", price: "۱۰۰ ین", image: "https://images.unsplash.com/photo-1606131731446-5568d87113aa?auto=format&fit=crop&w=400&q=80" },
-                        { name: "نوری / نگی", desc: "جلبک دریایی یا پیازچه اضافی.", price: "۵۰ ین", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80" }
+                        { name: "آجی-تاما", desc: "تخم مرغ مزه‌دار شده.", price: "۱۰۰ ین", image: "https://images.unsplash.com/photo-1581062094236-896886e0892c?auto=format&fit=crop&w=400&q=80" },
+                        { name: "چاشو", desc: "ورقه‌های گوشت.", price: "۱۰۰ ین", image: "https://images.unsplash.com/photo-1606131731446-5568d87113aa?auto=format&fit=crop&w=400&q=80" },
+                        { name: "نوری", desc: "جلبک دریایی معطر.", price: "۵۰ ین", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80" },
+                        { name: "نگی", desc: "پیازچه تازه.", price: "۵۰ ین", image: "https://images.unsplash.com/photo-1515543904379-3d757afe72e2?auto=format&fit=crop&w=400&q=80" }
                     ]
                 }
             }
@@ -158,19 +167,19 @@
             const isFarsi = lang === 'fa';
             document.body.className = isFarsi ? 'max-w-md mx-auto pb-10 farsi' : 'max-w-md mx-auto pb-10';
             
-            // Update Text
+            // Update UI Elements
             document.getElementById('commit-text').textContent = data[lang].commitment;
             document.getElementById('title-ramen').innerHTML = `<span class="${isFarsi ? 'ml-2' : 'mr-2'}">🍜</span> ${data[lang].sections.ramen}`;
             document.getElementById('title-sides').innerHTML = `<span class="${isFarsi ? 'ml-2' : 'mr-2'}">🍚</span> ${data[lang].sections.sides}`;
             document.getElementById('title-toppings').innerHTML = `<span class="${isFarsi ? 'ml-2' : 'mr-2'}">🥚</span> ${data[lang].sections.toppings}`;
             document.getElementById('footer-note').textContent = data[lang].footer;
 
-            // Render Lists
+            // Render Lists in Grid
             renderList('ramen-list', data[lang].items.ramen, isFarsi);
             renderList('sides-list', data[lang].items.sides, isFarsi);
             renderList('toppings-list', data[lang].items.toppings, isFarsi);
 
-            // Update Tab UI
+            // Tabs
             document.getElementById('btn-en').className = `text-sm font-semibold px-4 py-1 ${lang === 'en' ? 'tab-active' : 'text-gray-400'}`;
             document.getElementById('btn-fa').className = `text-sm font-semibold px-4 py-1 ${lang === 'fa' ? 'tab-active' : 'text-gray-400'}`;
         }
@@ -179,19 +188,20 @@
             const container = document.getElementById(containerId);
             container.innerHTML = items.map(item => `
                 <div class="card">
-                    <img src="${item.image}" alt="${item.name}" class="item-image" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-gray-800 text-lg">${item.name}</h3>
-                            <span class="price-badge text-sm whitespace-nowrap">${item.price}</span>
+                    <img src="${item.image}" alt="${item.name}" class="item-image" onerror="this.src='https://via.placeholder.com/200?text=Food'">
+                    <div class="p-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-gray-800 text-sm mb-1">${item.name}</h3>
+                            <p class="text-[10px] text-gray-500 line-clamp-2 leading-tight">${item.desc}</p>
                         </div>
-                        <p class="text-xs text-gray-500 leading-relaxed">${item.desc}</p>
+                        <div class="mt-2 ${isFarsi ? 'text-left' : 'text-right'}">
+                            <span class="price-badge">${item.price}</span>
+                        </div>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Initialize with English
         window.onload = () => setLang('en');
     </script>
 </body>
